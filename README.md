@@ -166,23 +166,45 @@ def multimap(pairs) -> dict:
    return result
    
 
-nearby_locations = Map(
-   {('Sriperumputhur', 'Pennalur'):  8, ('Sriperumputhur', 'nemili'): 4,('nemili', 'thodukkadu'): 4,('thodukkadu','sengadu'): 5,('Pennalur', 'Meavalakuppam'): 4, ('Pennalur', 'Valarpuram'): 7,('Pennalur', 'Kuthambakkam'):9,('Kuthambakkam','Thirumazhisai'):7, 
-    ('sengadu','mappedu'): 6,('sengadu','paapparambakkam'): 10,('paapparambakkam','putlur'): 11, ('mappedu','kilacheri'): 6,('sengadu','polivakkam'): 4, ('Thirumazhisai','poonamallee'): 4, ('poonamallee','Avadi'):  10,('Avadi','pattabiram'): 6,
-    ('pattabiram','veppampattu'): 5,('veppampattu','putlur'): 5,('pattabiram','serangerii'): 6,('serangerii','vellavedu'): 5, ('putlur', 'Tiruvallur'): 5,})
+Thanjavur_to_Nagapattinam = Map(
+    {('Thanjavur', 'Ayyampettai'):  17, ('Ayyampettai', 'Papanasam'): 13, ('Papanasam', 'Thirukarukkavur'):9, ('Thirukarukkavur', 'Ammapettai'):19, ('Papanasam', 'Kumbakonam'): 13, 
+     ('Kumbakonam', 'NatchiyarKovil'): 9, ('NatchiyarKovil', 'Kudavasal'):  9, ('Kudavasal', 'Palayur'): 16, ('Palayur', 'Thirukarukkavur'): 12, ('Ammapettai', 'Needamangalam'): 11, 
+     ('Needamangalam', 'Kothavasal;'): 16, ('Kothavasal', 'Thiruvarur'):  14, ('Thiruvarur', 'Mallakalyanam'): 10, ('Mallakalyanam', 'Kudavasal'): 14,
+    ('NatchiyarKovil', 'Nannilam'): 21, ('Nannilam', 'Kangalancherry'):  15, ('Kangalancherry', 'Mallakalyanam'): 12, ('Thiruvarur', 'Neelapadi'): 8, ('Neelapadi', 'Nagapattinam'): 17, 
+    ('Nagapattinam', 'Nagore'): 5, ('Nagore', 'Sollakattanur'):  15, ('Sollakattanur', 'Kangalancherry'): 10, ('Nagore', 'Thirumarugal'): 15, ('Thirumarugal', 'Nannilam'): 17,})
 
 
-r0 = RouteProblem('Sriperumputhur','pattabiram', map=nearby_locations)
-r1 = RouteProblem('Sriperumputhur', 'Tiruvallur', map=nearby_locations)
-r2 = RouteProblem('Sriperumputhur', 'Avadi', map=nearby_locations)
-r3 = RouteProblem('Sriperumputhur', 'putlur', map=nearby_locations)
-r4 = RouteProblem('Pennalur', 'poonamallee', map=nearby_locations)
-r5 = RouteProblem('Sriperumputhur', 'Valarpuram', map=nearby_locations)
-r6 = RouteProblem('vellavedu', 'pattabiram', map=nearby_locations)
+r0 = RouteProblem('Thanjavur', 'Thiruvarur', map=Thanjavur_to_Nagapattinam)
+r1 = RouteProblem('Needamangalam', 'Sollakattanur', map=Thanjavur_to_Nagapattinam)
+r2 = RouteProblem('Thanjavur', 'Nagapattinam', map=Thanjavur_to_Nagapattinam)
+r3 = RouteProblem('Thiruvarur', 'Papanasam', map=Thanjavur_to_Nagapattinam)
+r4 = RouteProblem('Sollakattanur', 'Thirukarukkavur', map=Thanjavur_to_Nagapattinam)
 
+
+goal_state_path=breadth_first_search(r0)
+print("GoalStateWithPath:{0}".format(goal_state_path))
+print(path_states(goal_state_path) )
+print("Total Distance={0} Kilometers".format(goal_state_path.path_cost))
+
+goal_state_path=breadth_first_search(r1)
+print("\n\nGoalStateWithPath:{0}".format(goal_state_path))
+print(path_states(goal_state_path) )
+print("Total Distance={0} Kilometers".format(goal_state_path.path_cost))
 
 goal_state_path=breadth_first_search(r2)
-path_states(goal_state_path) 
+print("\n\nGoalStateWithPath:{0}".format(goal_state_path))
+print(path_states(goal_state_path) )
+print("Total Distance={0} Kilometers".format(goal_state_path.path_cost))
+
+goal_state_path=breadth_first_search(r3)
+print("\n\nGoalStateWithPath:{0}".format(goal_state_path))
+print(path_states(goal_state_path) )
+print("Total Distance={0} Kilometers".format(goal_state_path.path_cost))
+
+goal_state_path=breadth_first_search(r4)
+print("\n\nGoalStateWithPath:{0}".format(goal_state_path))
+print(path_states(goal_state_path) )
+print("Total Distance={0} Kilometers".format(goal_state_path.path_cost))
 
 ```
 
