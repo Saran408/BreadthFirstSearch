@@ -1,5 +1,5 @@
 ### EXP NO:02
-### DATE:10/05/2022
+### DATE:28/04/2022
 
 # <p align='center'> Breadth First Search</p>
 ## AIM
